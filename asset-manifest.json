@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cornell-wushu/static/css/main.f8cd6ab7.css",
-    "main.js": "/cornell-wushu/static/js/main.d42ccb12.js",
+    "main.js": "/cornell-wushu/static/js/main.0f57eb84.js",
     "polyfills-dom.js": "/cornell-wushu/static/js/polyfills-dom.1ae0a5cf.chunk.js",
     "polyfills-core-js.js": "/cornell-wushu/static/js/polyfills-core-js.5de8efdc.chunk.js",
     "static/js/240.e2b6414a.chunk.js": "/cornell-wushu/static/js/240.e2b6414a.chunk.js",
@@ -41,7 +41,7 @@
     "static/media/logo_red.jpg": "/cornell-wushu/static/media/logo_red.9505accc9b0a3948c3c8.jpg",
     "index.html": "/cornell-wushu/index.html",
     "main.f8cd6ab7.css.map": "/cornell-wushu/static/css/main.f8cd6ab7.css.map",
-    "main.d42ccb12.js.map": "/cornell-wushu/static/js/main.d42ccb12.js.map",
+    "main.0f57eb84.js.map": "/cornell-wushu/static/js/main.0f57eb84.js.map",
     "polyfills-dom.1ae0a5cf.chunk.js.map": "/cornell-wushu/static/js/polyfills-dom.1ae0a5cf.chunk.js.map",
     "polyfills-core-js.5de8efdc.chunk.js.map": "/cornell-wushu/static/js/polyfills-core-js.5de8efdc.chunk.js.map",
     "240.e2b6414a.chunk.js.map": "/cornell-wushu/static/js/240.e2b6414a.chunk.js.map",
@@ -78,6 +78,6 @@
   },
   "entrypoints": [
     "static/css/main.f8cd6ab7.css",
-    "static/js/main.d42ccb12.js"
+    "static/js/main.0f57eb84.js"
   ]
 }
