@@ -34,5 +34,4 @@ amplify-s3-image {
   --width: 300px;
   object-fit: initial;
   -o-object-fit: initial;
-  -o-object-position: center;
 }
