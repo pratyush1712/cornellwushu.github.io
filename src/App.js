@@ -19,13 +19,12 @@ function App() {
       <div data-testid="App">
         <Header />
         <Routes>
-
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/members" element={<Member />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/performances" element={<PastPerf />} />
-          <Route path="wushulive" element={<LivePerformance />} />
+          <Route path="/wushulive" element={<LivePerformance />} />
         </Routes>
         <Footer />
       </div>
