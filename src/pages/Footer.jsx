@@ -1,38 +1,47 @@
 import React from "react";
 import BottomNavigation from '@mui/material/BottomNavigation';
-import { Grid, Typography, Container, Button } from "@mui/material";
+import { Grid, Typography, Container, Button, IconButton, Link } from "@mui/material";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { Typing, Logo } from '../styles/FooterStyles';
 import { rgba } from 'polished';
+import { bgColorPrimary, bgColorSecondary, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
 
 const Footer = () => {
   return (
     <>
-      <Grid container bgcolor={'whitesmoke'} alignItems={'center'} pt={2}>
-        <Grid element xs={12} md={5} align={'center'} sx={{ paddingRight: { md: 14 } }}>
-          <Container sx={{ width: { md: 300, xs: 250 } }}>
-            <Logo style={{ marginLeft: -31 }} />
+      <Grid container bgcolor={'whitesmoke'} alignItems={'center'} justifyContent={'center'} pb={3} pt={2}>
+        <Grid item align={'center'}>
+          <Container sx={{ width: 300 }}>
+            <Logo style={{ height: 150, backgroundRepeat: 'no-repeat', marginLeft: 35 }} />
             <Typography variant={'h4'} sx={{ color: '#201E1F', marginLeft: { md: -3, xs: -1 } }}><i>Cornell Wushu</i></Typography>
-            <Grid container align={'center'}>
-              <Grid element xs={4}>
-                <Button variant="link" href="https://www.instagram.com/cornellwushu/" target="_blank" startIcon={<InstagramIcon sx={{ color: "#FF4000" }} />} size="large" sx={{ marginRight: 3 }}></Button>
-              </Grid>
-              <Grid element xs={4}>
-                <Button variant="link" href="https://www.facebook.com/groups/194421890577476" target="_blank" startIcon={<FacebookIcon sx={{ color: "#FF4000" }} />} size="large" sx={{ marginRight: 3 }}></Button>
-              </Grid>
-              <Grid element xs={4}>
-                <Button variant="link" href="https://www.youtube.com/user/CornellWushu" target="_blank" startIcon={<YouTubeIcon sx={{ color: "#FF4000" }} />} size="large"></Button>
-              </Grid>
-            </Grid>
           </Container>
         </Grid>
-        <Grid element xs={12} md={7} align={'center'} sx={{ paddingLeft: { md: 17 }, paddingBottom: { xs: 6 }, paddingTop: { xs: 3 }, marginLeft: { xs: -0.2 } }}>
+        <Grid item >
+          <Grid container align={'center'}>
+            <Grid item md={12}>
+              <IconButton href="https://www.instagram.com/cornellwushu/" target="_blank" size="large">
+                <InstagramIcon sx={{ color: "#CC1122" }} />
+              </IconButton>
+            </Grid>
+            <Grid item md={12}>
+              <IconButton href="https://www.facebook.com/groups/194421890577476" target="_blank" size="large">
+                <FacebookIcon sx={{ color: "#CC1122" }} />
+              </IconButton>
+            </Grid>
+            <Grid item md={12}>
+              <IconButton href="https://www.youtube.com/user/CornellWushu" target="_blank" size="large">
+                <YouTubeIcon sx={{ color: "#CC1122" }} />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item justifyContent={'center'} align={'center'} sx={{ paddingBottom: { xs: 6 }, paddingTop: { xs: 3 } }}>
           <Container>
             <Typography variant="p" fontSize={20}>
-              <mark style={{ backgroundColor: rgba(255, 64, 0, 0.07) }}><i>@ cornell university<br />
-                Built by Pratyush Sudhakar</i></mark>
+              <i>@ cornell university<br />
+                Built by Pratyush Sudhakar</i>
             </Typography>
           </Container>
         </Grid>

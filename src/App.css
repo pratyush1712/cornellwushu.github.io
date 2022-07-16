@@ -29,3 +29,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(240,0,0,0.48);
 }
+amplify-s3-image {
+  --height: 200px;
+  --width: 300px;
+  object-fit: initial;
+  -o-object-fit: initial;
+  -o-object-position: center;
+}

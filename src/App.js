@@ -5,11 +5,14 @@ import React from 'react';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
 import About from './pages/About';
-import Performances from './pages/Performances';
+import PastPerf from './pages/PastPerf';
 import Member from './pages/Members';
 import Home from './pages/Home';
 import FAQ from './pages/FAQ';
-
+import LivePerformance from './pages/LivePerformance';
+import Amplify from 'aws-amplify'
+import awsconfig from './aws-exports'
+Amplify.configure(awsconfig)
 function App() {
   return (
     <Router>
@@ -20,7 +23,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/members" element={<Member />} />
           <Route path="/faq" element={<FAQ />} />
-          <Route path="/performances" element={<Performances />} />
+          <Route path="/performances" element={<PastPerf />} />
+          <Route path="wushulive" element={<LivePerformance />} />
         </Routes>
         <Footer />
       </div>

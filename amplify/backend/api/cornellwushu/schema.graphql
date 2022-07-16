@@ -1,0 +1,28 @@
+type Performances @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  location: String!
+  date: AWSDateTime!
+  url: AWSURL!
+  Members: [Members] @manyToMany(relationName: "PerformancesMembers")
+  eventName: String
+}
+
+type Members @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  netID: String!
+  graduationYear: String
+  majorAndMinor: String
+  description: String
+  funFact: String
+  fullName: String!
+  instagram: AWSURL
+  facebook: AWSURL
+  reddit: AWSURL
+  discord: String
+  eboardPosition: String
+  yearJoined: Int!
+  yearLeft: Int
+  performancess: [Performances] @manyToMany(relationName: "PerformancesMembers")
+  images: [AWSURL]
+}
+ 

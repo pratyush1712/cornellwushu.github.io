@@ -1,51 +1,179 @@
 import React, { useEffect, useState } from 'react';
-import { DataStore } from '@aws-amplify/datastore';
-import { Card, CardContent, Grid, Typography, CardMedia, CardHeader, Link } from '@mui/material';
-import DetailView from '../components/DetailView';
+import { Card, CardContent, Button, Grid, Typography, CardMedia, CardHeader, Link, Container, Modal, Box, Avatar, Stack, Divider, Icon, CardActions, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 import zIndex from '@mui/material/styles/zIndex';
 import CloseIcon from '@mui/icons-material/Close';
 import { rgba } from 'polished';
+import logo from '../images/logo_red.jpg';
+import { bgColorPrimary, bgColorPrimaryNoBlur, bgColorSecondary, bgColorSecondaryNoBlur, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
+import { DataStore } from '@aws-amplify/datastore'; import { Storage } from "@aws-amplify/storage"
+import { Members, PerformancesMembers } from '../models';
+import { AmplifyS3Image } from "@aws-amplify/ui-react";
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import Portal from '@mui/material/Portal';
+import { bgcolor } from '@mui/system';
+const style = {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  bgcolor: bgColorPrimaryNoBlur,
+  boxShadow: 24,
+  borderRadius: 1,
+  p: 2,
+};
 
 function Member() {
+  const [showPref, setShowPref] = useState(false)
   const [data, setData] = useState([]);
   const [display, setDisplay] = useState(null);
-  const [style, setStyle] = useState(null);
+  useEffect(() => {
+    const fetchMembers = async () => {
+      let members = await DataStore.query(Members);
+      let memWithImages = [];
+      for (let mem of members) {
+        let relationships = (await DataStore.query(PerformancesMembers)).filter(req => req.members.id === mem.id);
+        let newMem = {
+          ...mem,
+          performances: relationships
+        }
+        memWithImages.push(newMem)
+      }
+      setData(memWithImages)
+    }
+    fetchMembers();
+  }, [])
 
   const handleOnClick = (mem) => {
-    console.log('click', mem.image[0]);
-    setDisplay(mem)
+    setDisplay(mem);
   }
   return (
-    <>
-      <Typography variant='h1' mt={57} mb={2} sx={{ fontSize: { xs: 50, md: 80 } }} fontFamily={'Fira Sans'} align={"center"} color="#201E1F">Members</Typography>
-      <DetailView member={display} setDisplay={setDisplay} sx={{ display: 'none' }}></DetailView>
-      <Grid container xs={12} justifyContent={"center"} sx={style}>
-        {data.map((member) => (
-          <Grid element>
-            <Card style={{ cursor: "pointer" }} onClick={() => handleOnClick(member)} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, width: 'fit-content', height: 'fit-content', ":hover": { boxShadow: 5 } }}>
-              <CardMedia
-                sx={{ objectFit: 'cover', objectPosition: 'center -50px' }}
-                component="img"
-                height={180}
-                width={120}
-                src={member.image[0]}
-                alt={member.FullName}>
-              </CardMedia>
-              <CardContent style={{ width: 220, height: { md: 30, xs: 'fit-content' } }}>
-                <Typography>
-                  {member.name}<br></br>
-                  <Link color='inherit'><b>Role</b></Link>
-                </Typography>
-                <Typography sx={{ display: { md: 'none' } }}>
-                  {member.GraduationYear}<br></br>
-                  {member.Description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
+    <Container justifyContent={'center'}>
+      <Typography variant='h2' mt={2} mb={2} sx={{ fontSize: { xs: 50, md: 80 } }} fontFamily={fontPrimary} align={"center"} color={fontColorPrimary}>Members</Typography>
+      {display && (
+        <Modal
+          display={{ xs: 'none', md: 'block' }}
+          open={{ xs: false, md: display != null }}
+          onClose={() => setDisplay(null)}
+          onClickAway={() => setDisplay(null)}
+        >
+          <Box sx={style}
+            display={{ xs: 'none', md: 'block' }}
+          >
+            <Stack direction={{ md: 'row', xs: 'column' }} width={'fit-content'} sx={{ maxHeight: '100%', msOverflowY: 'scroll' }}>
+              <Card sx={{ bgcolor: bgColorSecondary, minWidth: 230, mr: 2, justifyContent: 'center', height: 'fit-content' }}>
+                <AmplifyS3Image
+                  imgKey={display.netID + '/image.jpg'}
+                  alt={display.fullName}
+                  level={'public'}
+                  sx={{ objectFit: 'contain' }} />
+                <CardContent sx={{ lineHeight: 0.2 }} bgcolor={bgColorPrimary}>
+                  <Typography variant='subtitle1'><strong>{display.fullName}</strong></Typography>
+                  {display.eboardPosition && (
+                    <Typography variant="subtitle1"><strong>Position:</strong> {display.eboardPosition}</Typography>
+                  )}
+                  <Typography variant='subtitle1'><strong>Member Since:</strong> {display.yearJoined}</Typography>
+                  <Typography variant='subtitle1'><strong>Major:</strong> {display.majorAndMinor}</Typography>
+                  <Typography variant='subtitle1'><strong>Graduation Year:</strong> {display.graduationYear}</Typography>
+                </CardContent>
+                <Grid container justifyContent={'space-evenly'} >
+                  {display.instagram && (
+                    <Grid item>
+                      <IconButton href={display.instagram} target="_blank" size="large">
+                        <InstagramIcon />
+                      </IconButton>
+                    </Grid>
+                  )}
+                  {display.facebook && (
+                    <Grid item>
+                      <IconButton href={display.facebook} target="_blank" size="large">
+                        <FacebookIcon />
+                      </IconButton>
+                    </Grid>
+                  )}
+                </Grid>
+              </Card>
+              <Card sx={{ width: 'fit-content', p: 2, minWidth: 400, bgcolor: bgColorSecondaryNoBlur, height: 'inherit', alignContent: 'space-between' }}>
+                <Stack flexDirection='column' alignContent={'space-between'}>
+                  <Grid item xs={12}>
+                    <Typography variant='body1'>{display.description}<br />
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography variant='subtitle1' sx={{ alignSelf: 'end' }}><strong>Fun Fact:</strong> {display.funFact}</Typography>
+                    <Button onClick={() => { setShowPref(true) }} variant='outlined' color='primary' sx={{ borderColor: 'black', color: 'black', ml: -1 }}>{'View ' + display.fullName.split(" ")[0] + "'s Performances"}</Button>
+                    <Modal
+                      open={showPref}
+                      onClose={() => setShowPref(false)}
+                      aria-labelledby="child-modal-title"
+                      aria-describedby="child-modal-description"
+                    >
+                      <Box sx={style} bgcolor={bgColorSecondaryNoBlur}>
+                        <List sx={{ minWidth: 500 }}>
+                          {display.performances.map(pref => {
+                            return (
+                              <>
+                                <ListItem alignItems="flex-start" component={Link} sx={{ textDecoration: 'none' }} href={pref.performances.url} target={'_blank'}>
+                                  <ListItemAvatar>
+                                    <Avatar sx={{ bgcolor: fontColorPrimary }}>{pref.performances.eventName.split(" ")[0][0]}</Avatar>
+                                  </ListItemAvatar>
+                                  <ListItemText
+                                    sx={{ color: 'black' }}
+                                    primary={pref.performances.eventName}
+                                    secondary={<React.Fragment>
+                                      <Typography
+                                        sx={{ display: 'inline' }}
+                                        component="span"
+                                        variant="body2"
+                                        color="text.primary"
+                                      >
+                                        {pref.performances.location + " - "}
+                                      </Typography>
+                                      {(new Date(pref.performances.date).toDateString())}
+                                    </React.Fragment>} />
+                                </ListItem><Divider variant="inset" component="li" />
+                              </>)
+                          })}
+                        </List>
+                      </Box>
+                    </Modal>
+                  </Grid>
+                </Stack>
+              </Card>
+            </Stack>
+          </Box>
+        </Modal >
+      )
+      }
+      <Grid container xs={12} justifyContent={"center"} >
+        {data.map((member) => {
+          return (
+            <Grid item md={3} xs={12}>
+              <Card style={{ cursor: "pointer" }} onClick={() => handleOnClick(member)} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, ":hover": { boxShadow: 5 } }}>
+                <AmplifyS3Image
+                  imgKey={member.netID + '/image.jpg'}
+                  level={'public'}
+                  theme={{
+                    photoImg: { maxWidth: "100%", maxHeight: "100%", objectFit: 'stretch' }
+                  }} />
+                <CardContent zIndex={10} sx={{ width: { md: 220, xs: '100%' }, height: { md: 30, xs: 'fit-content' }, display: 'flex', flexDirection: 'column', justifyContent: 'center', align: 'center' }}>
+                  <Typography >
+                    {member.fullName}</Typography>
+                  {member.eboardPosition && (
+                    <Typography >{member.eboardPosition}</Typography>
+                  )}
+                  <Typography sx={{ display: { md: 'none' } }}>
+                    {member.graduationYear}<br></br>
+                    {member.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          )
+        })}
       </Grid>
-    </>
+    </Container >
   )
 }
 

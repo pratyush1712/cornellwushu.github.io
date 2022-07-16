@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cornellwushu-staging-180126-authRole",
+      "UnauthRoleArn": "arn:aws:iam::815171314331:role/amplify-cornellwushu-staging-180126-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::815171314331:role/amplify-cornellwushu-staging-180126-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-cornellwushu-staging-180126-deployment",
+      "UnauthRoleName": "amplify-cornellwushu-staging-180126-unauthRole",
+      "StackName": "amplify-cornellwushu-staging-180126",
+      "StackId": "arn:aws:cloudformation:us-east-1:815171314331:stack/amplify-cornellwushu-staging-180126/25730c00-0468-11ed-8a9b-12cb8b624d2b",
+      "AmplifyAppId": "d3tm30b52s4ty7"
+    },
+    "categories": {
+      "auth": {
+        "cornellwushu": {}
+      }
+    }
+  }
+}

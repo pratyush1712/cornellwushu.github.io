@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import styled from "styled-components";
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
-const pages = [["Home", "/"], ["About", "/about"], ["Members", "/members"], ["FAQ", "/faq"], ["Performances", "/performances"]];
+const pages = [["Home", "/"], ["About", "/about"], ["Members", "/members"], ["FAQ", "/faq"], ["Performances", "/performances"], ['Wushu   Live', '/wushulive']];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
