@@ -2,7 +2,7 @@
   "name": "wushu-final",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://pratyush1712.github.io/",
+  "homepage": "https://pratyush1712.github.io/cornell-wushu/",
   "dependencies": {
     "-": "^0.0.1",
     "@aws-amplify/analytics": "^5.2.9",
@@ -26,7 +26,6 @@
     "aws-amplify": "^4.3.27",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "gh-pages": "^4.0.0",
     "nodemon": "^2.0.18",
     "npx": "^10.2.2",
     "polished": "^4.2.2",
@@ -70,6 +69,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "ini": "^1.3.5",
     "inquirer": "^6.5.1"
   }
