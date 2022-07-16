@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwushu_final=self.webpackChunkwushu_final||[]).push([[832],{2832:function(n,u,t){t.r(u),t.d(u,{amplify_auth_container:function(){return r}});var e=t(22),r=function(){function n(n){(0,e.r)(this,n)}return n.prototype.render=function(){return(0,e.h)(e.H,null,(0,e.h)("form",{autoComplete:"on",hidden:!0},(0,e.h)("input",{name:"username"}),(0,e.h)("input",{name:"password",type:"password"}),(0,e.h)("input",{type:"submit"})),(0,e.h)("slot",null))},n}()}}]);
+//# sourceMappingURL=832.f723e11a.chunk.js.map
