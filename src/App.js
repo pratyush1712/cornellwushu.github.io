@@ -19,6 +19,7 @@ function App() {
       <div data-testid="App">
         <Header />
         <Routes>
+
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/members" element={<Member />} />
