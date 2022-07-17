@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import { Route, Switch, NavLink, Link, Routes } from 'react-router-dom';
 import React from 'react';
 import Header from './pages/Header';
@@ -14,17 +14,18 @@ import Amplify from 'aws-amplify'
 import awsconfig from './aws-exports'
 Amplify.configure(awsconfig)
 function App() {
+  console.log(process.env.PUBLIC_URL)
   return (
-    <Router>
+    <Router >
       <div data-testid="App">
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/members" element={<Member />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/performances" element={<PastPerf />} />
-          <Route path="/wushulive" element={<LivePerformance />} />
+          <Route path="" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="members" element={<Member />} />
+          <Route path="faq" element={<FAQ />} />
+          <Route path="performances" element={<PastPerf />} />
+          <Route path="wushulive" element={<LivePerformance />} />
         </Routes>
         <Footer />
       </div>

@@ -48,12 +48,6 @@
       }
     }
   },
-  "storage": {
-    "s3cornellwushustorageedceb0fc": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  },
+  "storage": {},
   "video": {}
 }

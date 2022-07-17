@@ -1,12 +1,10 @@
-import { Card, CardMedia, Typography, Avatar, Stack, AvatarGroup, CardActions, Modal, Box, Divider, ListItem, ListItemAvatar, List, ListItemText } from '@mui/material';
+import { Card, CardMedia, Typography, Avatar, Stack, AvatarGroup, CardActions, Modal, Box, Divider, ListItem, ListItemAvatar, List, ListItemText, Link } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import videojs from 'video.js'
 import 'video.js/dist/video-js.css'
 import { DataStore } from '@aws-amplify/datastore';
-import { Storage } from "@aws-amplify/storage";
 import { Members, PerformancesMembers, Performances } from '../models';
-import { AmplifyS3Image } from "@aws-amplify/ui-react";
 import { Container, Grid, CardContent } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 import { bgColorPrimary, bgColorPrimaryNoBlur, bgColorSecondaryNoBlur, bgColorSecondary, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
@@ -43,10 +41,6 @@ function PastPerf() {
     }
     fetchPerformances();
   }, [])
-  const handleOnClick = (mem) => {
-    setDisplay(mem);
-  }
-  console.log(performance)
   return (
     <Container justifyContent='center' sx={{ mb: 3 }}>
       <Typography variant='h2' mt={2} align='center' fontFamily={fontPrimary} color={fontColorPrimary} sx={{ mb: 4 }}>Wushu at Multiple Events</Typography>
@@ -71,16 +65,16 @@ function PastPerf() {
             }}>
               <List sx={{ minWidth: 500 }}>
                 {performance.members.map(mem => {
-                  console.log(mem.members)
                   return (
                     <>
-                      <ListItem alignItems="flex-start" sx={{ width: '100%' }}>
+                      <ListItem alignItems="flex-start"
+                        sx={{ width: '100%', cursor: 'pointer', ':hover': { transition: 'smooth', transform: "scale3d(1.025, 1.025, 1.40)", width: '80%' } }}
+                        component={Link} href={mem.members.instagram ? mem.members.instagram : mem.members.facebook} target={'_blank'}>
                         <ListItemAvatar>
                           <Avatar
-                            component={AmplifyS3Image}
-                            imgKey={mem.members.netID + '/image.jpg'}
+                            src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
                             alt={mem.members.fullName}
-                            level={'public'} />
+                          />
                         </ListItemAvatar>
                         <ListItemText
                           sx={{ color: 'black' }}
@@ -107,36 +101,37 @@ function PastPerf() {
         {data.map(perf => {
           console.log(data)
           return (
-            <Card elevation={2} color={bgColorSecondary} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, "&:hover": { transition: 'smooth', transform: "scale3d(1.015, 1.015, 1.40)" } }} >
-              <CardMedia component="iframe"
-                width='fit-content' height='fit-content'
-                src={perf.url + '?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0'}
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; 
+            <Grid item xs={3}>
+              <Card elevation={2} color={bgColorSecondary} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, "&:hover": { transition: 'smooth', transform: "scale3d(1.015, 1.015, 1.40)" } }} >
+                <CardMedia component="iframe"
+                  width='fit-content' height='fit-content'
+                  src={perf.url + '?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0'}
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; 
                 encrypted-media; gyroscope; 
                 picture-in-picture" allowfullscreen>
-              </CardMedia>
-              <CardContent>
-                <Typography variant='subtitle1' ><b>{perf.eventName}</b></Typography>
-                <Typography variant='body2'>{perf.location}</Typography>
-                <Typography variant='caption'>{(new Date(perf.date)).toDateString()}</Typography>
-                <CardActions sx={{ ml: -1 }}>
-                  <AvatarGroup max={4} sx={{ ml: 0, cursor: 'pointer', ":hover": { transition: 'smooth', transform: "scale3d(1.5, 1.5, 1.40)", position: 'relative' } }} onClick={() => setPerformance(perf)}>
-                    {perf.members.map((mem) => {
-                      return (
-                        <Tooltip title={mem.members.fullName} arrow>
-                          <Avatar sx={{ width: 24, height: 24 }}
-                            component={AmplifyS3Image}
-                            imgKey={mem.members.netID + '/image.jpg'}
-                            alt={mem.members.fullName}
-                            level={'public'} />
-                        </Tooltip>
-                      )
-                    })}
-                  </AvatarGroup>
-                </CardActions>
-              </CardContent>
-            </Card>
+                </CardMedia>
+                <CardContent>
+                  <Typography variant='subtitle1' ><b>{perf.eventName}</b></Typography>
+                  <Typography variant='body2'>{perf.location}</Typography>
+                  <Typography variant='caption'>{(new Date(perf.date)).toDateString()}</Typography>
+                  <CardActions sx={{ ml: -1 }}>
+                    <AvatarGroup max={4} sx={{ ml: 0, cursor: 'pointer', ":hover": { transition: 'smooth', transform: "scale3d(1.5, 1.5, 1.40)", position: 'relative' } }} onClick={() => setPerformance(perf)}>
+                      {perf.members.map((mem) => {
+                        return (
+                          <Tooltip title={mem.members.fullName} arrow>
+                            <Avatar sx={{ width: 24, height: 24, objectFir: 'cover' }}
+                              src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
+                              alt={mem.members.fullName}
+                            />
+                          </Tooltip>
+                        )
+                      })}
+                    </AvatarGroup>
+                  </CardActions>
+                </CardContent>
+              </Card>
+            </Grid>
           )
         })}
       </Grid>

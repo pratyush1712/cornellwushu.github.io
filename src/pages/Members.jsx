@@ -8,7 +8,6 @@ import logo from '../images/logo_red.jpg';
 import { bgColorPrimary, bgColorPrimaryNoBlur, bgColorSecondary, bgColorSecondaryNoBlur, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
 import { DataStore } from '@aws-amplify/datastore'; import { Storage } from "@aws-amplify/storage"
 import { Members, PerformancesMembers } from '../models';
-import { AmplifyS3Image } from "@aws-amplify/ui-react";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Portal from '@mui/material/Portal';
@@ -63,11 +62,10 @@ function Member() {
           >
             <Stack direction={{ md: 'row', xs: 'column' }} width={'fit-content'} sx={{ maxHeight: '100%', msOverflowY: 'scroll' }}>
               <Card sx={{ bgcolor: bgColorSecondary, minWidth: 230, mr: 2, justifyContent: 'center', height: 'fit-content' }}>
-                <AmplifyS3Image
-                  imgKey={display.netID + '/image.jpg'}
+                <CardMedia component={'img'}
+                  src={require('../MembersPictures/' + display.netID + '.jpg')}
                   alt={display.fullName}
-                  level={'public'}
-                  sx={{ objectFit: 'contain' }} />
+                  sx={{ objectFit: 'stretch', height: 250, width: '100%' }} />
                 <CardContent sx={{ lineHeight: 0.2 }} bgcolor={bgColorPrimary}>
                   <Typography variant='subtitle1'><strong>{display.fullName}</strong></Typography>
                   {display.eboardPosition && (
@@ -102,7 +100,7 @@ function Member() {
                   </Grid>
                   <Grid item xs={12}>
                     <Typography variant='subtitle1' sx={{ alignSelf: 'end' }}><strong>Fun Fact:</strong> {display.funFact}</Typography>
-                    <Button onClick={() => { setShowPref(true) }} variant='outlined' color='primary' sx={{ borderColor: 'black', color: 'black', ml: -1 }}>{'View ' + display.fullName.split(" ")[0] + "'s Performances"}</Button>
+                    <Button onClick={() => { setShowPref(true) }} variant='outlined' sx={{ color: fontColorPrimary, borderColor: fontColorPrimary, mt: 1, ":hover": { borderColor: fontColorPrimary } }}>{'View ' + display.fullName.split(" ")[0] + "'s Performances"}</Button>
                     <Modal
                       open={showPref}
                       onClose={() => setShowPref(false)}
@@ -110,11 +108,22 @@ function Member() {
                       aria-describedby="child-modal-description"
                     >
                       <Box sx={style} bgcolor={bgColorSecondaryNoBlur}>
-                        <List sx={{ minWidth: 500 }}>
+                        <Typography variant='h5' sx={{ mb: 2 }}>{display.fullName}'s Performances</Typography>
+                        <Divider variant='middle' />
+                        <List sx={{
+                          minWidth: 500, maxHeight: 300, overflowY: 'scroll', "&::-webkit-scrollbar": {
+                            width: 2,
+                            height: 2
+                          },
+                          "&::-webkit-scrollbar-thumb": {
+                            borderRadius: 8
+                          }
+                        }}>
                           {display.performances.map(pref => {
                             return (
                               <>
-                                <ListItem alignItems="flex-start" component={Link} sx={{ textDecoration: 'none' }} href={pref.performances.url} target={'_blank'}>
+                                <ListItem alignItems="flex-start" component={Link} sx={{ textDecoration: 'none', width: '100%', cursor: 'pointer', ':hover': { transition: 'smooth', transform: "scale3d(1.025, 1.025, 1.40)", width: '80%' } }}
+                                  href={pref.performances.url} target={'_blank'}>
                                   <ListItemAvatar>
                                     <Avatar sx={{ bgcolor: fontColorPrimary }}>{pref.performances.eventName.split(" ")[0][0]}</Avatar>
                                   </ListItemAvatar>
@@ -128,9 +137,10 @@ function Member() {
                                         variant="body2"
                                         color="text.primary"
                                       >
-                                        {pref.performances.location + " - "}
+                                        {pref.performances.location + ' '}
                                       </Typography>
-                                      {(new Date(pref.performances.date).toDateString())}
+                                      •
+                                      {' ' + (new Date(pref.performances.date).toDateString())}
                                     </React.Fragment>} />
                                 </ListItem><Divider variant="inset" component="li" />
                               </>)
@@ -151,17 +161,14 @@ function Member() {
           return (
             <Grid item md={3} xs={12}>
               <Card style={{ cursor: "pointer" }} onClick={() => handleOnClick(member)} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, ":hover": { boxShadow: 5 } }}>
-                <AmplifyS3Image
-                  imgKey={member.netID + '/image.jpg'}
-                  level={'public'}
-                  theme={{
-                    photoImg: { maxWidth: "100%", maxHeight: "100%", objectFit: 'stretch' }
-                  }} />
+                <CardMedia component={'img'}
+                  src={require('../MembersPictures/' + member.netID + '.jpg')}
+                  sx={{ objectFit: 'cover', height: 200 }}
+                />
                 <CardContent zIndex={10} sx={{ width: { md: 220, xs: '100%' }, height: { md: 30, xs: 'fit-content' }, display: 'flex', flexDirection: 'column', justifyContent: 'center', align: 'center' }}>
-                  <Typography >
-                    {member.fullName}</Typography>
+                  <Typography>{member.fullName}</Typography>
                   {member.eboardPosition && (
-                    <Typography >{member.eboardPosition}</Typography>
+                    <Typography variant="subtitle1"><strong>{member.eboardPosition}</strong></Typography>
                   )}
                   <Typography sx={{ display: { md: 'none' } }}>
                     {member.graduationYear}<br></br>

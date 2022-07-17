@@ -10,9 +10,9 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import styled from "styled-components";
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowseRouter as Router, Link } from 'react-router-dom';
 
-const pages = [["Home", "/"], ["About", "/about"], ["Members", "/members"], ["FAQ", "/faq"], ["Performances", "/performances"], ['Wushu   Live', '/wushulive']];
+const pages = [["Home", ""], ["About", "about"], ["Members", "members"], ["FAQ", "faq"], ["Performances", "performances"], ['Wushu Live', 'wushulive']];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
