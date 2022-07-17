@@ -101,37 +101,35 @@ function PastPerf() {
         {data.map(perf => {
           console.log(data)
           return (
-            <Grid item xs={3}>
-              <Card elevation={2} color={bgColorSecondary} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, "&:hover": { transition: 'smooth', transform: "scale3d(1.015, 1.015, 1.40)" } }} >
-                <CardMedia component="iframe"
-                  width='fit-content' height='fit-content'
-                  src={perf.url + '?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0'}
-                  title="YouTube video player" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; 
+            <Card color={bgColorSecondary} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, "&:hover": { transition: 'smooth', transform: "scale3d(1.015, 1.015, 1.40)" } }} >
+              <CardMedia component="iframe"
+                width='fit-content' height='fit-content'
+                src={perf.url + '?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0'}
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; 
                 encrypted-media; gyroscope; 
                 picture-in-picture" allowfullscreen>
-                </CardMedia>
-                <CardContent>
-                  <Typography variant='subtitle1' ><b>{perf.eventName}</b></Typography>
-                  <Typography variant='body2'>{perf.location}</Typography>
-                  <Typography variant='caption'>{(new Date(perf.date)).toDateString()}</Typography>
-                  <CardActions sx={{ ml: -1 }}>
-                    <AvatarGroup max={4} sx={{ ml: 0, cursor: 'pointer', ":hover": { transition: 'smooth', transform: "scale3d(1.5, 1.5, 1.40)", position: 'relative' } }} onClick={() => setPerformance(perf)}>
-                      {perf.members.map((mem) => {
-                        return (
-                          <Tooltip title={mem.members.fullName} arrow>
-                            <Avatar sx={{ width: 24, height: 24, objectFir: 'cover' }}
-                              src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
-                              alt={mem.members.fullName}
-                            />
-                          </Tooltip>
-                        )
-                      })}
-                    </AvatarGroup>
-                  </CardActions>
-                </CardContent>
-              </Card>
-            </Grid>
+              </CardMedia>
+              <CardContent>
+                <Typography variant='subtitle1' ><b>{perf.eventName}</b></Typography>
+                <Typography variant='body2'>{perf.location}</Typography>
+                <Typography variant='caption'>{(new Date(perf.date)).toDateString()}</Typography>
+                <CardActions sx={{ ml: -1 }}>
+                  <AvatarGroup max={4} sx={{ ml: 0, cursor: 'pointer', ":hover": { transition: 'smooth', transform: "scale3d(1.5, 1.5, 1.40)", position: 'relative' } }} onClick={() => setPerformance(perf)}>
+                    {perf.members.map((mem) => {
+                      return (
+                        <Tooltip title={mem.members.fullName} arrow>
+                          <Avatar sx={{ width: 24, height: 24, objectFir: 'cover' }}
+                            src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
+                            alt={mem.members.fullName}
+                          />
+                        </Tooltip>
+                      )
+                    })}
+                  </AvatarGroup>
+                </CardActions>
+              </CardContent>
+            </Card>
           )
         })}
       </Grid>
