@@ -119,7 +119,7 @@ function PastPerf() {
                     {perf.members.map((mem) => {
                       return (
                         <Tooltip title={mem.members.fullName} arrow>
-                          <Avatar sx={{ width: 24, height: 24, objectFir: 'cover' }}
+                          <Avatar sx={{ objectFit: 'cover' }}
                             src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
                             alt={mem.members.fullName}
                           />
