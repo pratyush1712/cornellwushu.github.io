@@ -2,7 +2,7 @@
   "name": "wushu-final",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://pratyush1712.github.io/cornell-wushu/",
+  "homepage": "https://cornellwushu.github.io/",
   "dependencies": {
     "-": "^0.0.1",
     "@aws-amplify/analytics": "^5.2.9",

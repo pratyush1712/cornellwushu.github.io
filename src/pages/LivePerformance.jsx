@@ -10,7 +10,7 @@ import GoogleAd from '../components/GoogleAds';
 function LivePerformance() {
     return (
         <Container justifyContent={'center'}>
-            <GoogleAd slot="4523466038" classNames="page-top" />
+            <GoogleAd slot="5288633232" classNames="page-top" />
         </Container>
     )
 
