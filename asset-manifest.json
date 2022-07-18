@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cornell-wushu/static/css/main.f8cd6ab7.css",
-    "main.js": "/cornell-wushu/static/js/main.8f7b1ef8.js",
+    "main.js": "/cornell-wushu/static/js/main.ca4f452b.js",
     "static/media/rml267.jpg": "/cornell-wushu/static/media/rml267.26096a96a780ea80fcaa.jpg",
     "static/media/aky28.jpg": "/cornell-wushu/static/media/aky28.087b494f6e3e1260d8e6.jpg",
     "static/media/kw529.jpg": "/cornell-wushu/static/media/kw529.a52f9985893f2f59d089.jpg",
@@ -25,10 +25,10 @@
     "static/media/ps2245.jpg": "/cornell-wushu/static/media/ps2245.b74bfda32d975614b8d0.jpg",
     "index.html": "/cornell-wushu/index.html",
     "main.f8cd6ab7.css.map": "/cornell-wushu/static/css/main.f8cd6ab7.css.map",
-    "main.8f7b1ef8.js.map": "/cornell-wushu/static/js/main.8f7b1ef8.js.map"
+    "main.ca4f452b.js.map": "/cornell-wushu/static/js/main.ca4f452b.js.map"
   },
   "entrypoints": [
     "static/css/main.f8cd6ab7.css",
-    "static/js/main.8f7b1ef8.js"
+    "static/js/main.ca4f452b.js"
   ]
 }
