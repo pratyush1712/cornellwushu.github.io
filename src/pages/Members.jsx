@@ -30,6 +30,7 @@ function Member() {
   useEffect(() => {
     const fetchMembers = async () => {
       let members = await DataStore.query(Members);
+      console.log(members)
       let memWithImages = [];
       for (let mem of members) {
         let relationships = (await DataStore.query(PerformancesMembers)).filter(req => req.members.id === mem.id);
