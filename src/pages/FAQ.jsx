@@ -6,7 +6,7 @@ import { bgColorPrimary, bgColorSecondary, fontColorPrimary, fontPrimary } from 
 function FAQ() {
     return (
         <>
-            <Grid container bgcolor={bgColorSecondary} sx={{ width: '100%', alignItems: 'center' }}>
+            <Grid container bgcolor={bgColorPrimary} sx={{ width: '100%', alignItems: 'center' }}>
                 <Container sx={{ paddingTop: 6, margin: 'auto', align: 'center' }}>
                     <Typography variant='h2' color={fontColorPrimary} align={'center'} fontFamily={fontPrimary}>Frequently Asked Questions</Typography><Divider variant='middle' sx={{ m: 2 }} />
                     <Typography variant='h6' color={fontColorPrimary} > What is the first step to joining Cornell Wushu? </Typography>
