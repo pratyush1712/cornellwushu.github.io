@@ -22,7 +22,6 @@ const NavBar = () => {
     };
 
     const handleCloseNavMenu = () => {
-        console.log('clicked')
         setAnchorElNav(null);
         window.scrollTo(0, 0, 'smooth');
         window.scrollTo({

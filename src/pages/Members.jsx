@@ -23,27 +23,14 @@ const style = {
   p: 2,
 };
 
-function Member() {
+function Member(props) {
   const [showPref, setShowPref] = useState(false)
   const [data, setData] = useState([]);
   const [display, setDisplay] = useState(null);
+  const i = 1;
   useEffect(() => {
-    const fetchMembers = async () => {
-      let members = await DataStore.query(Members);
-      console.log(members)
-      let memWithImages = [];
-      for (let mem of members) {
-        let relationships = (await DataStore.query(PerformancesMembers)).filter(req => req.members.id === mem.id);
-        let newMem = {
-          ...mem,
-          performances: relationships
-        }
-        memWithImages.push(newMem)
-      }
-      setData(memWithImages)
-    }
-    fetchMembers();
-  }, [])
+    setData(props.members)
+  }, [props])
 
   const handleOnClick = (mem) => {
     setDisplay(mem);
@@ -185,4 +172,4 @@ function Member() {
   )
 }
 
-export default Member;
+export default React.memo(Member);

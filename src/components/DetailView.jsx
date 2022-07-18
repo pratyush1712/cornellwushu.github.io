@@ -6,7 +6,6 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
 const DetailView = (props) => {
-  console.log('hey')
   const display = props.member;
   if (display != undefined) {
     return (

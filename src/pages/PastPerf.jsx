@@ -20,27 +20,13 @@ const style = {
   p: 2,
 };
 
-function PastPerf() {
+function PastPerf(props) {
   const [performance, setPerformance] = useState(null)
   const streamURL = 'https://2ec2615c32b8.us-east-1.playback.live-video.net/api/video/v1/us-east-1.951388478060.channel.GyudoC5s8aIt.m3u8'
   const [data, setData] = useState([]);
-  const [display, setDisplay] = useState(null);
   useEffect(() => {
-    const fetchPerformances = async () => {
-      let performances = await DataStore.query(Performances);
-      let performanceWithMembers = [];
-      for (let performance of performances) {
-        let relationships = (await DataStore.query(PerformancesMembers)).filter(req => req.performances.id === performance.id);
-        let newPerf = {
-          ...performance,
-          members: relationships
-        }
-        performanceWithMembers.push(newPerf)
-      }
-      setData(performanceWithMembers)
-    }
-    fetchPerformances();
-  }, [])
+    setData(props.performances)
+  }, [props])
   return (
     <Container justifyContent='center' sx={{ mb: 3 }}>
       <Typography variant='h2' mt={2} align='center' fontFamily={fontPrimary} color={fontColorPrimary} sx={{ mb: 4 }}>Wushu at Multiple Events</Typography>
@@ -99,7 +85,6 @@ function PastPerf() {
       )}
       <Grid container xs={12} justifyContent={"center"}>
         {data.map(perf => {
-          console.log(data)
           return (
             <Card color={bgColorSecondary} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, "&:hover": { transition: 'smooth', transform: "scale3d(1.015, 1.015, 1.40)" } }} >
               <CardMedia component="iframe"
@@ -116,16 +101,18 @@ function PastPerf() {
                 <Typography variant='caption'>{(new Date(perf.date)).toDateString()}</Typography>
                 <CardActions sx={{ ml: -1 }}>
                   <AvatarGroup max={4} sx={{ ml: 0, cursor: 'pointer', ":hover": { transition: 'smooth', transform: "scale3d(1.5, 1.5, 1.40)", position: 'relative' } }} onClick={() => setPerformance(perf)}>
-                    {perf.members.map((mem) => {
-                      return (
-                        <Tooltip title={mem.members.fullName} arrow>
-                          <Avatar sx={{ objectFit: 'cover' }}
-                            src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
-                            alt={mem.members.fullName}
-                          />
-                        </Tooltip>
-                      )
-                    })}
+                    {perf.members !== undefined && (
+                      perf.members.map((mem) => {
+                        return (
+                          <Tooltip title={mem.members.fullName} arrow>
+                            <Avatar sx={{ objectFit: 'cover' }}
+                              src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
+                              alt={mem.members.fullName}
+                            />
+                          </Tooltip>
+                        )
+                      })
+                    )}
                   </AvatarGroup>
                 </CardActions>
               </CardContent>
