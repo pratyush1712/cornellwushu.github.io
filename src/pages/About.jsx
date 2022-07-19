@@ -11,7 +11,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
 
 function About() {
-  const [info, setInfo] = useState('')
   const formsData = [
     {
       id: 'CLF',
@@ -26,12 +25,6 @@ function About() {
       url: 'https://www.youtube-nocookie.com/embed/iCkKbA3WXAg'
     },
     {
-      id: 'CLF',
-      title: 'Changquan (Long Fist)',
-      description: 'Changquan, or Longfist, is a northern style of Wushu/Kung-Fu.  It requires the body to be open and extended, with many reaching stances, punches, jumping kicks, and 360° sweeps.  Changquan is the most common and popular form of Contemporary Wushu.',
-      url: 'https://www.youtube-nocookie.com/embed/L7aFrqW81xc'
-    },
-    {
       id: 'TJQ',
       title: 'Taijiquan',
       description: 'Taiji (Tai Chi) is a form of internal Chinese martial arts focused on the circulation of qi (breath) throughout the body. The qi, originating in the dan tian (diaphragm), is mobilized through the repetition of specified forms harmonizing self defense, meditation, and health improvement. There are five major styles oftaiji: Chen, Yang, Sun, Wu, and Wu/Hao. Although the styles vary in speed and execution, they all share a common philosophy. Taiji has been depicted in major films like Crouching Tiger, Hidden Dragon and Ip Man.',
@@ -41,7 +34,7 @@ function About() {
       id: 'GS',
       title: 'Gunshu (Staff)',
       description: 'The staff is the most basic weapon in Chinese martial arts, often being called the “Grandfather.”  The entire body is made of wax wood with a thick base and a tapered tip.  Despite it’s simplicity in design, the staff’s power rivals that of other weapons with its massive circular sweeping strikes, quick twirls, and downward ground smashes.',
-      url: 'https://www.youtube-nocookie.com/embed/L7aFrqW81xc'
+      url: 'https://www.youtube-nocookie.com/embed/yXmosFYT_uE'
     }, {
       id: 'DBS',
       title: 'Daoshu (Broadsword)',
@@ -52,18 +45,12 @@ function About() {
       id: 'QS',
       title: 'Qiangshu (Spear)',
       description: 'Once used by generals and soldiers, the spear is reckoned as the “King” of the four basic weapons.  A modern spear user will employ many powerful whirling and whipping strikes that utilizes the spear’s great flexibility, as well as more direct stabs and blocks.  The body is long like the staff, but a pointed blade and horse hair tassel is attached at the tip.',
-      url: 'https://www.youtube-nocookie.com/embed/L7aFrqW81xc'
+      url: 'https://www.youtube-nocookie.com/embed/Y5Mwkot7S7Y'
     },
     {
       id: 'JSS',
       title: 'Jianshu (Straightsword)',
       description: 'Widely known as the “Gentleman” of Chinese weapons, the double-edged straightsword is one of the most difficult weapons to master.  It excels in complex movements that emphasize elegance, swiftness and fluidity with a range of basic techniques that includes slices, chops, thrusts, points, clouds and flowers.',
-      url: 'https://www.youtube-nocookie.com/embed/D2W605JFCTU'
-    },
-    {
-      id: 'GS',
-      title: 'Gunshu (Staff)',
-      description: 'The staff is the most basic weapon in Chinese martial arts, often being called the “Grandfather.”  The entire body is made of wax wood with a thick base and a tapered tip.  Despite it’s simplicity in design, the staff’s power rivals that of other weapons with its massive circular sweeping strikes, quick twirls, and downward ground smashes.',
       url: 'https://www.youtube-nocookie.com/embed/Vtw7MeSxn_o'
     }]
   return (

@@ -18,11 +18,11 @@ type PerformancesMembersMetaData = {
 
 export declare class Performances {
   readonly id: string;
-  readonly location: string;
-  readonly date: string;
-  readonly url: string;
-  readonly Members?: (PerformancesMembers | null)[] | null;
+  readonly location?: string | null;
+  readonly date?: string | null;
   readonly eventName?: string | null;
+  readonly url?: string | null;
+  readonly Members?: (PerformancesMembers | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Performances, PerformancesMetaData>);
@@ -31,21 +31,18 @@ export declare class Performances {
 
 export declare class Members {
   readonly id: string;
-  readonly netID: string;
+  readonly netID?: string | null;
+  readonly fullName?: string | null;
   readonly graduationYear?: string | null;
-  readonly majorAndMinor?: string | null;
   readonly description?: string | null;
-  readonly funFact?: string | null;
-  readonly fullName: string;
-  readonly instagram?: string | null;
   readonly facebook?: string | null;
-  readonly reddit?: string | null;
-  readonly discord?: string | null;
+  readonly majorAndMinor?: string | null;
+  readonly funFact?: string | null;
   readonly eboardPosition?: string | null;
-  readonly yearJoined: number;
+  readonly yearJoined?: number | null;
   readonly yearLeft?: number | null;
+  readonly instagram?: string | null;
   readonly performancess?: (PerformancesMembers | null)[] | null;
-  readonly images?: (string | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Members, MembersMetaData>);

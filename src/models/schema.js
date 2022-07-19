@@ -14,21 +14,28 @@ export const schema = {
                     "name": "location",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "date": {
                     "name": "date",
                     "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": true,
+                    "type": "AWSDate",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "eventName": {
+                    "name": "eventName",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "url": {
                     "name": "url",
                     "isArray": false,
                     "type": "AWSURL",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "Members": {
@@ -44,13 +51,6 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "performances"
                     }
-                },
-                "eventName": {
-                    "name": "eventName",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -108,18 +108,18 @@ export const schema = {
                     "name": "netID",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
-                "graduationYear": {
-                    "name": "graduationYear",
+                "fullName": {
+                    "name": "fullName",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "majorAndMinor": {
-                    "name": "majorAndMinor",
+                "graduationYear": {
+                    "name": "graduationYear",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -132,27 +132,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "funFact": {
-                    "name": "funFact",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "fullName": {
-                    "name": "fullName",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "instagram": {
-                    "name": "instagram",
-                    "isArray": false,
-                    "type": "AWSURL",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "facebook": {
                     "name": "facebook",
                     "isArray": false,
@@ -160,15 +139,15 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "reddit": {
-                    "name": "reddit",
+                "majorAndMinor": {
+                    "name": "majorAndMinor",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "discord": {
-                    "name": "discord",
+                "funFact": {
+                    "name": "funFact",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -185,13 +164,20 @@ export const schema = {
                     "name": "yearJoined",
                     "isArray": false,
                     "type": "Int",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "yearLeft": {
                     "name": "yearLeft",
                     "isArray": false,
                     "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "instagram": {
+                    "name": "instagram",
+                    "isArray": false,
+                    "type": "AWSURL",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -208,14 +194,6 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "members"
                     }
-                },
-                "images": {
-                    "name": "images",
-                    "isArray": true,
-                    "type": "AWSURL",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -342,5 +320,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "745d5eb349f7f0f764d06cee31ed9426"
+    "version": "59cb03c4f5760ea62a3af96dc54c7f19"
 };

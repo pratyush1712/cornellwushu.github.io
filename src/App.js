@@ -23,6 +23,7 @@ function App() {
   useEffect(() => {
     const fetchMembers = async () => {
       const membersPerformances = JSON.parse(JSON.stringify(await DataStore.query(PerformancesMembers)))
+      console.log(membersPerformances)
       let members = JSON.parse(JSON.stringify(await DataStore.query(Members)));
       let performances = JSON.parse(JSON.stringify(await DataStore.query(Performances)));
       for (const relationship of membersPerformances) {

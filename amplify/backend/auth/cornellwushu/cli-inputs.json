@@ -2,8 +2,8 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
-    "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "cornel5f07d559",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "cornel0486d8fc",
     "userPoolName": "cornellwushu",
     "autoVerifiedAttributes": [
       "email"
@@ -17,17 +17,22 @@
     "emailVerificationSubject": "Verification code: {####}",
     "emailVerificationMessage": "Verification code: {####}",
     "defaultPasswordPolicy": false,
-    "passwordPolicyMinLength": 7,
-    "passwordPolicyCharacters": [],
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [
+      "Requires Lowercase",
+      "Requires Numbers",
+      "Requires Symbols",
+      "Requires Uppercase"
+    ],
     "requiredAttributes": [],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "cornel5f07d559_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "cornel0486d8fc_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "5f07d559",
+    "sharedId": "0486d8fc",
     "resourceName": "cornellwushu",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
@@ -41,20 +46,6 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true,
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": true,
-    "dependsOn": []
+    "useEnabledMfas": true
   }
 }

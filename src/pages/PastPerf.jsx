@@ -8,6 +8,7 @@ import { Members, PerformancesMembers, Performances } from '../models';
 import { Container, Grid, CardContent } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 import { bgColorPrimary, bgColorPrimaryNoBlur, bgColorSecondaryNoBlur, bgColorSecondary, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
+import GoogleAd from '../components/GoogleAds';
 const style = {
   position: 'fixed',
   top: '50%',
@@ -100,7 +101,7 @@ function PastPerf(props) {
                 <Typography variant='body2'>{perf.location}</Typography>
                 <Typography variant='caption'>{(new Date(perf.date)).toDateString()}</Typography>
                 <CardActions sx={{ ml: -1 }}>
-                  <AvatarGroup max={4} sx={{ ml: 0, cursor: 'pointer', ":hover": { transition: 'smooth', transform: "scale3d(1.5, 1.5, 1.40)", position: 'relative' } }} onClick={() => setPerformance(perf)}>
+                  <AvatarGroup max={4} sx={{ ml: 0, cursor: 'pointer', ":hover": { transition: 'smooth', transform: "scale3d(1.5, 1.5, 1.40)", position: 'relative', ml: 3 } }} onClick={() => setPerformance(perf)}>
                     {perf.members !== undefined && (
                       perf.members.map((mem) => {
                         return (
@@ -120,6 +121,7 @@ function PastPerf(props) {
           )
         })}
       </Grid>
+      <GoogleAd slot="5288633232" classNames="page-top" />
     </Container >
   );
 }
