@@ -3,12 +3,11 @@ import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import videojs from 'video.js'
 import 'video.js/dist/video-js.css'
-import { DataStore } from '@aws-amplify/datastore';
-import { Members, PerformancesMembers, Performances } from '../models';
 import { Container, Grid, CardContent } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
-import { bgColorPrimary, bgColorPrimaryNoBlur, bgColorSecondaryNoBlur, bgColorSecondary, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
+import { bgColorPrimaryNoBlur, bgColorSecondary, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
 import GoogleAd from '../components/GoogleAds';
+import notFound from '../MembersPictures/notFound.svg'
 const style = {
   position: 'fixed',
   top: '50%',
@@ -20,6 +19,20 @@ const style = {
   borderRadius: 1,
   p: 2,
 };
+
+function returnAvatar(mem) {
+  try {
+    return (<Avatar
+      src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
+      alt={mem.members.fullName}
+    />)
+  } catch {
+    return (<Avatar
+      src={notFound}
+      alt={mem.members.fullName}
+    />)
+  }
+}
 
 function PastPerf(props) {
   const [performance, setPerformance] = useState(null)
@@ -58,10 +71,7 @@ function PastPerf(props) {
                         sx={{ width: '100%', cursor: 'pointer', ':hover': { transition: 'smooth', transform: "scale3d(1.025, 1.025, 1.40)", width: '80%' } }}
                         component={Link} href={mem.members.instagram ? mem.members.instagram : mem.members.facebook} target={'_blank'}>
                         <ListItemAvatar>
-                          <Avatar
-                            src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
-                            alt={mem.members.fullName}
-                          />
+                          {returnAvatar(mem)}
                         </ListItemAvatar>
                         <ListItemText
                           sx={{ color: 'black' }}
@@ -106,10 +116,7 @@ function PastPerf(props) {
                       perf.members.map((mem) => {
                         return (
                           <Tooltip title={mem.members.fullName} arrow>
-                            <Avatar sx={{ objectFit: 'cover' }}
-                              src={require('../MembersPictures/' + mem.members.netID + '.jpg')}
-                              alt={mem.members.fullName}
-                            />
+                            {returnAvatar(mem)}
                           </Tooltip>
                         )
                       })

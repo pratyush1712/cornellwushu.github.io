@@ -1,10 +1,7 @@
-import { CardHeader, Grid, Typography, Card, CardContent, CardMedia, Button } from '@mui/material'
-import React, { useState } from 'react'
-import { rgba } from 'polished';
-import about from '../images/about.jpg';
-import wushu from '../images/wushu.jpg';
+import { Grid, Typography, Card, CardContent, CardMedia } from '@mui/material'
+import React from 'react'
 import { Container } from '@mui/material';
-import { bgColorPrimary, bgColorSecondaryNoBlur, bgColorSecondary, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
+import { bgColorSecondary, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -54,22 +51,22 @@ function About() {
       url: 'https://www.youtube-nocookie.com/embed/Vtw7MeSxn_o'
     }]
   return (
-    <Container justifyContent='center' sx={{ mb: 3 }}>
+    <Container justifycontent='center' sx={{ mb: 3 }}>
       <Typography variant='h2' mt={2} align='center' fontFamily={fontPrimary} color={fontColorPrimary} sx={{ mb: 2 }}>About Wushu</Typography>
       <Typography variant='body1' sx={{ px: { md: 8, xs: 1 }, mb: 2 }}>
         Wushu is the Chinese name for martial arts, and in modern times it refers to the sport that comprises various standardized styles derived from traditional Chinese martial arts.
       </Typography>
-      <Grid container sx={{ p: { md: 6, xs: 1 } }} xs={12} justifyContent={"center"}>
+      <Grid container sx={{ p: { md: 6, xs: 1 } }} justifyContent={"center"}>
         {formsData.map((form) => (
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} key={form.title}>
             <Card elevation={2} color={bgColorSecondary}>
               <CardMedia component="iframe"
                 width="560" height="315"
                 src={form.url + '?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0'}
-                title="YouTube video player" frameborder="0"
+                title="YouTube video player" frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; 
                 encrypted-media; gyroscope; 
-                picture-in-picture" allowfullscreen>
+                picture-in-picture" allowFullScreen>
               </CardMedia>
               <CardContent>
                 <TreeView

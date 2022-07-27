@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, Button, Grid, Typography, CardMedia, CardHeader, Link, Container, Modal, Box, Avatar, Stack, Divider, Icon, CardActions, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { Card, CardContent, Button, Grid, Typography, CardMedia, Link, Container, Modal, Box, Avatar, Stack, Divider, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import zIndex from '@mui/material/styles/zIndex';
-import CloseIcon from '@mui/icons-material/Close';
-import { rgba } from 'polished';
-import logo from '../images/logo_red.jpg';
 import { bgColorPrimary, bgColorPrimaryNoBlur, bgColorSecondary, bgColorSecondaryNoBlur, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
-import { DataStore } from '@aws-amplify/datastore'; import { Storage } from "@aws-amplify/storage"
-import { Members, PerformancesMembers } from '../models';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import Portal from '@mui/material/Portal';
-import { bgcolor } from '@mui/system';
+import notFound from '../MembersPictures/notFound.svg'
 const style = {
   position: 'fixed',
   top: '50%',
@@ -23,11 +16,26 @@ const style = {
   p: 2,
 };
 
+function returnImage(member) {
+  try {
+    return (<CardMedia component={'img'}
+      src={require('../MembersPictures/' + member.netID + '.jpg')}
+      alt={member.fullName}
+      sx={{ objectFit: 'stretch', height: 250, width: '100%' }} />
+    )
+  } catch {
+    return (<CardMedia component={'img'}
+      src={notFound}
+      alt={member.fullName}
+      sx={{ objectFit: 'stretch', height: 250, width: '100%' }} />
+    )
+  }
+}
+
 function Member(props) {
   const [showPref, setShowPref] = useState(false)
   const [data, setData] = useState([]);
   const [display, setDisplay] = useState(null);
-  const i = 1;
   useEffect(() => {
     setData(props.members)
   }, [props])
@@ -50,10 +58,7 @@ function Member(props) {
           >
             <Stack direction={{ md: 'row', xs: 'column' }} width={'fit-content'} sx={{ maxHeight: '100%', msOverflowY: 'scroll' }}>
               <Card sx={{ bgcolor: bgColorSecondary, minWidth: 230, mr: 2, justifyContent: 'center', height: 'fit-content' }}>
-                <CardMedia component={'img'}
-                  src={require('../MembersPictures/' + display.netID + '.jpg')}
-                  alt={display.fullName}
-                  sx={{ objectFit: 'stretch', height: 250, width: '100%' }} />
+                {returnImage(display)}
                 <CardContent sx={{ lineHeight: 0.2 }} bgcolor={bgColorPrimary}>
                   <Typography variant='subtitle1'><strong>{display.fullName}</strong></Typography>
                   {display.eboardPosition && (
@@ -87,7 +92,7 @@ function Member(props) {
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
-                    <Typography variant='subtitle1' sx={{ alignSelf: 'end' }}><strong>Fun Fact:</strong> {display.funFact}</Typography>
+                    <Typography variant='subtitle1' sx={{ alignSelf: 'end' }}><strong>Fun Fact:</strong> {display.fullName === 'Pratyush Sudhakar' ? <code>{display.funFact}</code> : display.funFact}</Typography>
                     <Button onClick={() => { setShowPref(true) }} variant='outlined' sx={{ color: fontColorPrimary, borderColor: fontColorPrimary, mt: 1, ":hover": { borderColor: fontColorPrimary } }}>{'View ' + display.fullName.split(" ")[0] + "'s Performances"}</Button>
                     <Modal
                       open={showPref}
@@ -107,32 +112,34 @@ function Member(props) {
                             borderRadius: 8
                           }
                         }}>
-                          {display.performances.map(pref => {
-                            return (
-                              <>
-                                <ListItem alignItems="flex-start" component={Link} sx={{ textDecoration: 'none', width: '100%', cursor: 'pointer', ':hover': { transition: 'smooth', transform: "scale3d(1.025, 1.025, 1.40)", width: '80%' } }}
-                                  href={pref.performances.url} target={'_blank'}>
-                                  <ListItemAvatar>
-                                    <Avatar sx={{ bgcolor: fontColorPrimary }}>{pref.performances.eventName.split(" ")[0][0]}</Avatar>
-                                  </ListItemAvatar>
-                                  <ListItemText
-                                    sx={{ color: 'black' }}
-                                    primary={pref.performances.eventName}
-                                    secondary={<React.Fragment>
-                                      <Typography
-                                        sx={{ display: 'inline' }}
-                                        component="span"
-                                        variant="body2"
-                                        color="text.primary"
-                                      >
-                                        {pref.performances.location + ' '}
-                                      </Typography>
-                                      •
-                                      {' ' + (new Date(pref.performances.date).toDateString())}
-                                    </React.Fragment>} />
-                                </ListItem><Divider variant="inset" component="li" />
-                              </>)
-                          })}
+                          {display.performances && (
+                            display.performances.map(pref => {
+                              return (
+                                <>
+                                  <ListItem alignItems="flex-start" component={Link} sx={{ textDecoration: 'none', width: '100%', cursor: 'pointer', ':hover': { transition: 'smooth', transform: "scale3d(1.025, 1.025, 1.40)", width: '80%' } }}
+                                    href={pref.performances.url} target={'_blank'}>
+                                    <ListItemAvatar>
+                                      <Avatar sx={{ bgcolor: fontColorPrimary }}>{pref.performances.eventName.split(" ")[0][0]}</Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText
+                                      sx={{ color: 'black' }}
+                                      primary={pref.performances.eventName}
+                                      secondary={<React.Fragment>
+                                        <Typography
+                                          sx={{ display: 'inline' }}
+                                          component="span"
+                                          variant="body2"
+                                          color="text.primary"
+                                        >
+                                          {pref.performances.location + ' '}
+                                        </Typography>
+                                        •
+                                        {' ' + (new Date(pref.performances.date).toDateString())}
+                                      </React.Fragment>} />
+                                  </ListItem><Divider variant="inset" component="li" />
+                                </>)
+                            })
+                          )}
                         </List>
                       </Box>
                     </Modal>
@@ -149,10 +156,7 @@ function Member(props) {
           return (
             <Grid item md={3} xs={12}>
               <Card style={{ cursor: "pointer" }} onClick={() => handleOnClick(member)} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, ":hover": { boxShadow: 5 } }}>
-                <CardMedia component={'img'}
-                  src={require('../MembersPictures/' + member.netID + '.jpg')}
-                  sx={{ objectFit: 'cover', height: 200 }}
-                />
+                {returnImage(member)}
                 <CardContent zIndex={10} sx={{ width: { md: 220, xs: '100%' }, height: { md: 30, xs: 'fit-content' }, display: 'flex', flexDirection: 'column', justifyContent: 'center', align: 'center' }}>
                   <Typography>{member.fullName}</Typography>
                   {member.eboardPosition && (

@@ -1,8 +1,8 @@
 import './App.css';
 import { HashRouter as Router } from 'react-router-dom'
-import { Route, Switch, NavLink, Link, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import { DataStore } from '@aws-amplify/datastore'; import { Storage } from "@aws-amplify/storage"
+import { DataStore } from '@aws-amplify/datastore';
 import { Members, PerformancesMembers, Performances } from './models';
 
 import Header from './pages/Header';
@@ -19,11 +19,9 @@ Amplify.configure(awsconfig)
 function App() {
   const [performances, setPerformances] = useState([]);
   const [members, setMembers] = useState([]);
-  const [display, setDisplay] = useState(null);
   useEffect(() => {
     const fetchMembers = async () => {
       const membersPerformances = JSON.parse(JSON.stringify(await DataStore.query(PerformancesMembers)))
-      console.log(membersPerformances)
       let members = JSON.parse(JSON.stringify(await DataStore.query(Members)));
       let performances = JSON.parse(JSON.stringify(await DataStore.query(Performances)));
       for (const relationship of membersPerformances) {

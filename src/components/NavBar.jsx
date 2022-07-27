@@ -9,7 +9,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import styled from "styled-components";
 import { BrowseRouter as Router, Link } from 'react-router-dom';
 
 const pages = [["Home", ""], ["About", "about"], ["Members", "members"], ["FAQ", "faq"], ["Performances", "performances"]];
@@ -83,7 +82,7 @@ const NavBar = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <Link to={page[1]} style={{ fontFamily: 'Fira Sans', textDecoration: 'none', color: '#201E1F' }}>
+                                <Link to={page[1]} style={{ fontFamily: 'Fira Sans', textDecoration: 'none', color: '#201E1F' }} key={page[1]}>
                                     <MenuItem
                                         key={page}
                                         onClick={handleCloseNavMenu}
@@ -105,7 +104,7 @@ const NavBar = () => {
                         }}
                     >
                         {pages.map((page) => (
-                            <Link to={page[1]} style={{ fontFamily: 'Fira Sans', textDecoration: 'none', color: '#FEEFDD' }} onClick={handleCloseNavMenu}>
+                            <Link to={page[1]} style={{ fontFamily: 'Fira Sans', textDecoration: 'none', color: '#FEEFDD' }} onClick={handleCloseNavMenu} key={page[1]}>
                                 <Button
                                     key={page}
 
