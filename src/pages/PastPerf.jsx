@@ -42,7 +42,7 @@ function PastPerf(props) {
     setData(props.performances)
   }, [props])
   return (
-    <Container justifyContent='center' sx={{ mb: 3 }}>
+    <Container justifycontent='center' sx={{ mb: 3 }}>
       <Typography variant='h2' mt={2} align='center' fontFamily={fontPrimary} color={fontColorPrimary} sx={{ mb: 4 }}>Wushu at Multiple Events</Typography>
       {performance && (
         <Modal
@@ -67,7 +67,7 @@ function PastPerf(props) {
                 {performance.members.map(mem => {
                   return (
                     <>
-                      <ListItem alignItems="flex-start"
+                      <ListItem alignItems="flex-start" key={mem.members.fullName}
                         sx={{ width: '100%', cursor: 'pointer', ':hover': { transition: 'smooth', transform: "scale3d(1.025, 1.025, 1.40)", width: '80%' } }}
                         component={Link} href={mem.members.instagram ? mem.members.instagram : mem.members.facebook} target={'_blank'}>
                         <ListItemAvatar>
@@ -101,10 +101,10 @@ function PastPerf(props) {
               <CardMedia component="iframe"
                 width='fit-content' height='fit-content'
                 src={perf.url + '?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0'}
-                title="YouTube video player" frameborder="0"
+                title="YouTube video player" frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; 
                 encrypted-media; gyroscope; 
-                picture-in-picture" allowfullscreen>
+                picture-in-picture" allowFullScreen>
               </CardMedia>
               <CardContent>
                 <Typography variant='subtitle1' ><b>{perf.eventName}</b></Typography>
@@ -115,7 +115,7 @@ function PastPerf(props) {
                     {perf.members !== undefined && (
                       perf.members.map((mem) => {
                         return (
-                          <Tooltip title={mem.members.fullName} arrow>
+                          <Tooltip title={mem.members.fullName} arrow kwy={mem.members.fullName}>
                             {returnAvatar(mem)}
                           </Tooltip>
                         )

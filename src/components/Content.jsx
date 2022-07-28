@@ -1,13 +1,11 @@
 import Typed from "typed.js";
 import { useEffect, useRef } from "react";
-import { Typing, Logo } from '../styles/HeaderStyles';
+import { Logo } from '../styles/HeaderStyles';
 import { Typography, Grid, Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { rgba } from 'polished';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import TabScrollButton from '@mui/material/TabScrollButton';
 
 export default function Content() {
   // Create Ref element.

@@ -1,14 +1,13 @@
-import { Avatar, Grid, Typography, Chip, Divider } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import React from 'react'
-import { rgba } from 'polished';
 import about from '../images/about.jpg';
 import wushu from '../images/wushu.jpg';
-import { bgColorPrimary, bgColorSecondary, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
+import { fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
 import { Container } from '@mui/system';
 
 function Home() {
   return (
-    <Container justifyContent={'center'}>
+    <Container justifycontent={'center'}>
       <Grid container sx={{ justifyContent: 'center', align: 'center' }}>
         <Grid container alignItems={'center'} p={3}>
           <Grid item md={6} display={{ xs: 'none', md: 'flex' }} sx={{ justifyContent: 'space-evenly' }}>
@@ -34,34 +33,32 @@ function Home() {
         </Grid>
         <Grid container alignItems={'center'} mt={5}>
           <Grid item md={7} justifyContent={'space-evenly'}>
-            <Typography variant='body1' paragraph>
-              <Typography variant='h2' fontFamily={fontPrimary} color={fontColorPrimary} align={'center'} p={1}>
-                Cornell Wushu
-              </Typography>
-              Cornell Wushu is dedicated to promoting, practicing, and performing Wushu.
-              <br></br><br></br>
-              We hold open practices which, as the name suggests, are open to all
-              members of the Cornell community, including undergraduate students,
-              graduate students, teaching staff, and other employees. We welcome
-              people of all experience levels. In these open practices, experienced
-              members of Cornell Wushu will teach the basics of Wushu and accommodate
-              whatever skill level is shown.
-              <br></br><br></br>
-              We perform at various events in the community. These events range from charity
-              fundraising events to cultural celebration events. They take place both in
-              Cornell and in the wider community, which includes the city of Ithaca and
-              surrounding cities. (For information on how to request, see our Contact Us
-              page.) Our most common appearances include JUSA’s Ennichi, CSA’s Mid-autumn
-              Festival, Project Hope’s Hope Night, and CAPSU’s Asia Night. Head over to
-              the Videos page to watch some of our performances.
-              <br></br><br></br>
-              Last but not least, we spend a lot of time improving our own abilities.
-              We take these abilities to competitions: University Wushu Games and
-              Collegiate Wushu Competition. In the past few years, we’ve taken gold
-              in Women’s Advanced Changquan, gold in Women’s Beginner Changquan, silver
-              in Men’s Intermediate Nanquan, silver in Men’s Intermediate Taijiquan,
-              just to list a few.
+            <Typography variant='h2' fontFamily={fontPrimary} color={fontColorPrimary} align={'center'} p={1}>
+              Cornell Wushu
             </Typography>
+            Cornell Wushu is dedicated to promoting, practicing, and performing Wushu.
+            <br></br><br></br>
+            We hold open practices which, as the name suggests, are open to all
+            members of the Cornell community, including undergraduate students,
+            graduate students, teaching staff, and other employees. We welcome
+            people of all experience levels. In these open practices, experienced
+            members of Cornell Wushu will teach the basics of Wushu and accommodate
+            whatever skill level is shown.
+            <br></br><br></br>
+            We perform at various events in the community. These events range from charity
+            fundraising events to cultural celebration events. They take place both in
+            Cornell and in the wider community, which includes the city of Ithaca and
+            surrounding cities. (For information on how to request, see our Contact Us
+            page.) Our most common appearances include JUSA’s Ennichi, CSA’s Mid-autumn
+            Festival, Project Hope’s Hope Night, and CAPSU’s Asia Night. Head over to
+            the Videos page to watch some of our performances.
+            <br></br><br></br>
+            Last but not least, we spend a lot of time improving our own abilities.
+            We take these abilities to competitions: University Wushu Games and
+            Collegiate Wushu Competition. In the past few years, we’ve taken gold
+            in Women’s Advanced Changquan, gold in Women’s Beginner Changquan, silver
+            in Men’s Intermediate Nanquan, silver in Men’s Intermediate Taijiquan,
+            just to list a few.
           </Grid>
           <Grid item md={5} display={{ xs: 'none', md: 'flex' }} sx={{ pl: 5 }}>
             <img

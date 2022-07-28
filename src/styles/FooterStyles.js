@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../images/logo_red.jpg';
+import logo from '../images/wushu.gif';
 
 export const Logo = styled.div`
       background-image: url(${logo});

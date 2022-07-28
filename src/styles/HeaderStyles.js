@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import header_background from "../images/header_background.jpg";
-import { rgba } from 'polished';
 import logo from '../images/logo.jpg';
 
 export const Banner = styled.div`

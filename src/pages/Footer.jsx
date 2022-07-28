@@ -1,12 +1,9 @@
 import React from "react";
-import BottomNavigation from '@mui/material/BottomNavigation';
-import { Grid, Typography, Container, Button, IconButton, Link } from "@mui/material";
+import { Grid, Typography, Container, IconButton } from "@mui/material";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { Typing, Logo } from '../styles/FooterStyles';
-import { rgba } from 'polished';
-import { bgColorPrimary, bgColorSecondary, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
+import { Logo } from '../styles/FooterStyles';
 
 const Footer = () => {
   return (

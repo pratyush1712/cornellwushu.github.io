@@ -22,8 +22,9 @@ function App() {
   useEffect(() => {
     const fetchMembers = async () => {
       const membersPerformances = JSON.parse(JSON.stringify(await DataStore.query(PerformancesMembers)))
-      let members = JSON.parse(JSON.stringify(await DataStore.query(Members)));
       let performances = JSON.parse(JSON.stringify(await DataStore.query(Performances)));
+      let members = JSON.parse(JSON.stringify(await DataStore.query(Members)));
+      let sortedMembers = { alumni: {}, currentMember: [], currentEboard: [] }
       for (const relationship of membersPerformances) {
         const memberIndex = members.findIndex(req => req.id === relationship.members.id);
         const performanceIndex = performances.findIndex(req => req.id === relationship.performances.id);
@@ -32,7 +33,21 @@ function App() {
         performances[performanceIndex].members = performances[performanceIndex].members || [];
         performances[performanceIndex].members.push(relationship);
       }
-      setMembers(members);
+      for (const member of members) {
+        if (member.yearLeft) {
+          const yearLeft = member.yearLeft;
+          sortedMembers.alumni[yearLeft] = sortedMembers.alumni[yearLeft] || [];
+          sortedMembers.alumni[yearLeft].push(member);
+        }
+        else if (member.eboardPosition) {
+          const role = member.eboardPosition;
+          sortedMembers.currentEboard.push(member);
+        }
+        else {
+          sortedMembers.currentMember.push(member)
+        }
+      }
+      setMembers(sortedMembers);
       setPerformances(performances);
     }
     fetchMembers()
