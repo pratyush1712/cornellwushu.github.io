@@ -40,7 +40,6 @@ function App() {
           sortedMembers.alumni[yearLeft].push(member);
         }
         else if (member.eboardPosition) {
-          const role = member.eboardPosition;
           sortedMembers.currentEboard.push(member);
         }
         else {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, Button, Grid, Typography, CardMedia, Link, Container, Modal, Box, Avatar, Stack, Divider, List, ListItem, ListItemAvatar, ListItemText, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Card, CardContent, Button, Grid, Typography, CardMedia, Link, Container, Modal, Box, Avatar, Stack, Divider, List, ListItem, ListItemAvatar, ListItemText, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { bgColorPrimary, bgColorPrimaryNoBlur, bgColorSecondary, bgColorSecondaryNoBlur, fontColorPrimary, fontPrimary } from '../styles/ColorsFonts';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -36,7 +36,7 @@ function returnImage(member) {
 }
 
 function returnGridItem(member, handleOnClick) {
-  return (<Grid item xs={12} sm={7} md={3}>
+  return (<Grid item xs={12} sm={12} md={3}>
     <Card style={{ cursor: "pointer" }} onClick={() => handleOnClick(member)} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, ":hover": { boxShadow: 5 } }}>
       {returnImage(member)}
       <CardContent sx={{ width: { md: 220, xs: '100%' }, height: { md: 30, xs: 'fit-content' }, display: 'flex', flexDirection: 'column', justifyContent: 'center', align: 'center' }}>
@@ -66,7 +66,7 @@ function Member(props) {
       setData(props.members)
       minYear.current = parseInt(Object.keys(props.members.alumni).sort((a, b) => a - b)[0]);
       let yers = [];
-      for (let i = minYear.current; i <= maxYear.current; i++) {
+      for (let i = maxYear.current; i >= minYear.current; i -= 1) {
         yers.push(i);
       }
       setYears(yers);
@@ -79,19 +79,39 @@ function Member(props) {
   const handleYearChange = (event, year) => {
     setYear(year)
   }
+  const handleMobileYearChange = (event, year) => {
+    setYear(year.props.value)
+  }
   if (data.currentEboard) {
     return (
       <Container justifycontent={'center'}>
         <Typography variant='h2' mt={2} mb={2} sx={{ fontSize: { xs: 50, sm: 80 } }} fontFamily={fontPrimary} align={"center"} color={fontColorPrimary}>Members</Typography>
+        <FormControl fullWidth sx={{ display: { sm: 'none' } }}>
+          <InputLabel id="demo-simple-select-label">Year</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={year}
+            label="Year"
+            color="primary"
+            sx={{ borderColor: fontColorPrimary, color: fontColorPrimary }}
+            onChange={handleMobileYearChange}
+          >
+            {years.map((year) => (
+              <MenuItem color={'primary'} key={year} value={year} sx={{ color: fontColorPrimary, borderColor: fontColorPrimary, textDecorationColor: fontColorPrimary, mt: 1, ":hover": { borderColor: fontColorPrimary } }}>{year - 1} - {year}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <ToggleButtonGroup
           color="primary"
           value={year}
           exclusive
+          sx={{ display: { xs: 'none', sm: 'flex' }, justifyContent: 'center', width: '100%' }}
           onChange={handleYearChange}
           fullWidth
         >
           {years.map((year) => (
-            <ToggleButton color={'primary'} size='small' key={year} value={year} sx={{ color: fontColorPrimary, borderColor: fontColorPrimary, textDecorationColor: fontColorPrimary, mt: 1, ":hover": { borderColor: fontColorPrimary } }}>{year - 1} - {year}</ToggleButton>
+            <ToggleButton color={'primary'} size='medium' key={year} value={year} sx={{ color: fontColorPrimary, borderColor: fontColorPrimary, textDecorationColor: fontColorPrimary, mt: 1, ":hover": { borderColor: fontColorPrimary } }}>{year - 1} - {year}</ToggleButton>
           ))}
         </ToggleButtonGroup>
         {display && (
@@ -197,24 +217,24 @@ function Member(props) {
           </Modal >
         )
         }
-        {year === (new Date()).getFullYear() + 1 && (<><Typography variant='h5' mt={2} mb={3} sx={{ fontSize: { xs: 30, sm: 60 } }} fontFamily={fontPrimary} align={"center"} color={fontColorPrimary}>Eboard</Typography>
-          <Grid container justifyContent={"center"} >
+        {year === (new Date()).getFullYear() + 1 && (<><Typography variant='h5' mt={6} mb={0.5} sx={{ fontSize: { xs: 30, sm: 40 } }} fontFamily={fontPrimary} color={fontColorPrimary}>Eboard</Typography><Divider variant='fullWidth' sx={{ mb: 3 }} />
+          <Grid container>
             {data.currentEboard.map((member) => {
               return (<>{returnGridItem(member, handleOnClick)}</>)
             })}
           </Grid>
-          <Typography variant='h5' mt={2} mb={3} sx={{ fontSize: { xs: 30, sm: 60 } }} fontFamily={fontPrimary} align={"center"} color={fontColorPrimary}>Members</Typography>
-          <Grid container justifyContent={"center"} >
+          <Typography variant='h5' mt={2} mb={0.5} sx={{ fontSize: { xs: 30, sm: 40 } }} fontFamily={fontPrimary} color={fontColorPrimary}>Members</Typography><Divider variant='fullWidth' sx={{ mb: 3 }} />
+          <Grid container>
             {data.currentMember.map((member) => {
               return (<>{returnGridItem(member, handleOnClick)}</>)
             })}
           </Grid></>)}
-        {year != (new Date()).getFullYear() + 1 && (
-          <Grid container justifyContent={"center"} mt={5}>
+        {year !== (new Date()).getFullYear() + 1 && (<><Typography variant='h5' mt={6} mb={0.5} sx={{ fontSize: { xs: 30, sm: 40 } }} fontFamily={fontPrimary} color={fontColorPrimary}>Cornell Wushu &#183; {year}</Typography><Divider variant='fullWidth' sx={{ mb: 3 }} />
+          <Grid container mt={5}>
             {data.alumni[year]?.map(alumni => {
               return (<>{returnGridItem(alumni, handleOnClick)}</>)
             })}
-          </Grid>
+          </Grid></>
         )}
       </Container >
     )

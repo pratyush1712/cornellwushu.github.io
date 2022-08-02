@@ -18,7 +18,7 @@ function Home() {
               style={{ width: '80%', height: 250, objectFit: 'cover', objectPosition: 'center', borderRadius: 8 }}
             />
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={6} sx={{ mt: 2 }}>
             <Typography variant='body1' paragraph sx={{ lineHeight: 1.9 }}>
               Wushu is the Chinese name for martial arts, and in modern
               times it refers to the sport that comprises various standardized
@@ -32,33 +32,35 @@ function Home() {
           </Grid>
         </Grid>
         <Grid container alignItems={'center'} mt={5}>
-          <Grid item md={7} justifyContent={'space-evenly'}>
+          <Grid item md={7} justifyContent={'space-evenly'} sx={{ p: 1, pb: 4 }}>
             <Typography variant='h2' fontFamily={fontPrimary} color={fontColorPrimary} align={'center'} p={1}>
               Cornell Wushu
             </Typography>
-            Cornell Wushu is dedicated to promoting, practicing, and performing Wushu.
-            <br></br><br></br>
-            We hold open practices which, as the name suggests, are open to all
-            members of the Cornell community, including undergraduate students,
-            graduate students, teaching staff, and other employees. We welcome
-            people of all experience levels. In these open practices, experienced
-            members of Cornell Wushu will teach the basics of Wushu and accommodate
-            whatever skill level is shown.
-            <br></br><br></br>
-            We perform at various events in the community. These events range from charity
-            fundraising events to cultural celebration events. They take place both in
-            Cornell and in the wider community, which includes the city of Ithaca and
-            surrounding cities. (For information on how to request, see our Contact Us
-            page.) Our most common appearances include JUSA’s Ennichi, CSA’s Mid-autumn
-            Festival, Project Hope’s Hope Night, and CAPSU’s Asia Night. Head over to
-            the Videos page to watch some of our performances.
-            <br></br><br></br>
-            Last but not least, we spend a lot of time improving our own abilities.
-            We take these abilities to competitions: University Wushu Games and
-            Collegiate Wushu Competition. In the past few years, we’ve taken gold
-            in Women’s Advanced Changquan, gold in Women’s Beginner Changquan, silver
-            in Men’s Intermediate Nanquan, silver in Men’s Intermediate Taijiquan,
-            just to list a few.
+            <Typography sx={{ lineHeight: 1.9 }}>
+              Cornell Wushu is dedicated to promoting, practicing, and performing Wushu.
+              <br /><br />
+              We hold open practices which, as the name suggests, are open to all
+              members of the Cornell community, including undergraduate students,
+              graduate students, teaching staff, and other employees. We welcome
+              people of all experience levels. In these open practices, experienced
+              members of Cornell Wushu will teach the basics of Wushu and accommodate
+              whatever skill level is shown.
+              <br /><br />
+              We perform at various events in the community. These events range from charity
+              fundraising events to cultural celebration events. They take place both in
+              Cornell and in the wider community, which includes the city of Ithaca and
+              surrounding cities. (For information on how to request, see our Contact Us
+              page.) Our most common appearances include JUSA’s Ennichi, CSA’s Mid-autumn
+              Festival, Project Hope’s Hope Night, and CAPSU’s Asia Night. Head over to
+              the Videos page to watch some of our performances.
+              <br /><br />
+              Last but not least, we spend a lot of time improving our own abilities.
+              We take these abilities to competitions: University Wushu Games and
+              Collegiate Wushu Competition. In the past few years, we’ve taken gold
+              in Women’s Advanced Changquan, gold in Women’s Beginner Changquan, silver
+              in Men’s Intermediate Nanquan, silver in Men’s Intermediate Taijiquan,
+              just to list a few.
+            </Typography>
           </Grid>
           <Grid item md={5} display={{ xs: 'none', md: 'flex' }} sx={{ pl: 5 }}>
             <img

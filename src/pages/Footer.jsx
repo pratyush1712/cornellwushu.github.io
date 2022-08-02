@@ -18,17 +18,17 @@ const Footer = () => {
         <Grid item >
           <Grid container align={'center'}>
             <Grid item md={12}>
-              <IconButton href="https://www.instagram.com/cornellwushu/" target="_blank" size="large">
+              <IconButton href="https://www.instagram.com/cornellwushu/" alt={'Instagram'} target="_blank" size="large">
                 <InstagramIcon sx={{ color: "#CC1122" }} />
               </IconButton>
             </Grid>
             <Grid item md={12}>
-              <IconButton href="https://www.facebook.com/groups/194421890577476" target="_blank" size="large">
+              <IconButton href="https://www.facebook.com/groups/194421890577476" alt={'Facebook'} target="_blank" size="large">
                 <FacebookIcon sx={{ color: "#CC1122" }} />
               </IconButton>
             </Grid>
             <Grid item md={12}>
-              <IconButton href="https://www.youtube.com/user/CornellWushu" target="_blank" size="large">
+              <IconButton href="https://www.youtube.com/user/CornellWushu" alt={'YouTube'} target="_blank" size="large">
                 <YouTubeIcon sx={{ color: "#CC1122" }} />
               </IconButton>
             </Grid>

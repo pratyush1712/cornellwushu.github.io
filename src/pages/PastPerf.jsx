@@ -94,7 +94,7 @@ function PastPerf(props) {
           </Box>
         </Modal>
       )}
-      <Grid container xs={12} justifyContent={"center"}>
+      <Grid container justifyContent={'center'}>
         {data.map(perf => {
           return (
             <Card color={bgColorSecondary} sx={{ marginRight: { sm: 3, md: 3 }, marginBottom: { xs: 4, sm: 4, md: 8 }, "&:hover": { transition: 'smooth', transform: "scale3d(1.015, 1.015, 1.40)" } }} >

@@ -59,13 +59,13 @@ export default function Content() {
       </ThemeProvider>
       <Grid container direction="row" alignItems="center" justifyContent={'center'} sx={{ position: 'absolute', top: { md: '40vw', xs: '50vw' } }}>
         <Grid item>
-          <Button variant="link" href="https://www.instagram.com/cornellwushu/" target="_blank" startIcon={<InstagramIcon sx={{ color: "#FEEFDD" }} />} size="large" sx={{ marginRight: 3 }}></Button>
+          <Button variant="link" href="https://www.instagram.com/cornellwushu/" target="_blank" startIcon={<InstagramIcon sx={{ color: "#FEEFDD" }} alt={'Instagram'} />} size="large" sx={{ marginRight: 3 }}></Button>
         </Grid>
         <Grid item>
-          <Button variant="link" href="https://www.facebook.com/groups/194421890577476" target="_blank" startIcon={<FacebookIcon sx={{ color: "#FEEFDD" }} />} size="large" sx={{ marginRight: 3 }}></Button>
+          <Button variant="link" href="https://www.facebook.com/groups/194421890577476" target="_blank" startIcon={<FacebookIcon sx={{ color: "#FEEFDD" }} alt={'Facebook'} />} size="large" sx={{ marginRight: 3 }}></Button>
         </Grid>
         <Grid item>
-          <Button variant="link" href="https://www.youtube.com/user/CornellWushu" target="_blank" startIcon={<YouTubeIcon sx={{ color: "#FEEFDD" }} />} size="large"></Button>
+          <Button variant="link" href="https://www.youtube.com/user/CornellWushu" target="_blank" startIcon={<YouTubeIcon sx={{ color: "#FEEFDD" }} alt={'YouTube'} />} size="large"></Button>
         </Grid>
       </Grid>
     </>
