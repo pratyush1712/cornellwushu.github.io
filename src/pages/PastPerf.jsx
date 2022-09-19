@@ -111,11 +111,11 @@ function PastPerf(props) {
                 <Typography variant='body2'>{perf.location}</Typography>
                 <Typography variant='caption'>{(new Date(perf.date)).toDateString()}</Typography>
                 <CardActions sx={{ ml: -1 }}>
-                  <AvatarGroup max={4} sx={{ ml: 0, cursor: 'pointer', ":hover": { transition: 'smooth', transform: "scale3d(1.5, 1.5, 1.40)", position: 'relative', ml: 3 } }} onClick={() => setPerformance(perf)}>
+                  <AvatarGroup max={4} sx={{ ml: 0, cursor: 'pointer', ":hover": { transition: 'smooth', transform: "scale3d(1.5, 1.5, 1.40)", position: 'relative', ml: 4 } }} onClick={() => setPerformance(perf)}>
                     {perf.members !== undefined && (
                       perf.members.map((mem) => {
                         return (
-                          <Tooltip title={mem.members.fullName} arrow kwy={mem.members.fullName}>
+                          <Tooltip title={mem.members.fullName} arrow key={mem.members.fullName}>
                             {returnAvatar(mem)}
                           </Tooltip>
                         )

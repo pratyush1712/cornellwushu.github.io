@@ -9,8 +9,8 @@ function Home() {
   return (
     <Container justifycontent={'center'}>
       <Grid container sx={{ justifyContent: 'center', align: 'center' }}>
-        <Grid container alignItems={'center'} p={3}>
-          <Grid item md={6} display={{ xs: 'none', md: 'flex' }} sx={{ justifyContent: 'space-evenly' }}>
+        <Grid container alignItems={'center'} pt={3}>
+          <Grid item md={5} display={{ xs: 'none', md: 'flex' }} sx={{ justifyContent: 'space-evenly' }}>
             <img
               align='center'
               alt="Cornell Wushu"
@@ -18,7 +18,7 @@ function Home() {
               style={{ width: '80%', height: 250, objectFit: 'cover', objectPosition: 'center', borderRadius: 8 }}
             />
           </Grid>
-          <Grid item md={6} sx={{ mt: 2 }}>
+          <Grid item md={7} sx={{ mt: 2, p:1 }}>
             <Typography variant='body1' paragraph sx={{ lineHeight: 1.9 }}>
               Wushu is the Chinese name for martial arts, and in modern
               times it refers to the sport that comprises various standardized
