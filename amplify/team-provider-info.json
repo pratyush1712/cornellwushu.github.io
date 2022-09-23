@@ -10,6 +10,11 @@
       "StackName": "amplify-cornellwushu-staging-153531",
       "StackId": "arn:aws:cloudformation:us-east-1:793610548825:stack/amplify-cornellwushu-staging-153531/6c598730-0778-11ed-9c0f-0e0382e4b947",
       "AmplifyAppId": "d2cxllonax6vvz"
+    },
+    "categories": {
+      "auth": {
+        "cornellwushu": {}
+      }
     }
   }
 }

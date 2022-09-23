@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "cornellwushu",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-15784183-e6bb-4abf-8c16-175bbabf5cc6/amplify/backend/api/cornellwushu/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-63511e3b-3aa2-40d0-b865-2cbc8faf0108/amplify/backend/api/cornellwushu/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

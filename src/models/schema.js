@@ -132,13 +132,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "facebook": {
-                    "name": "facebook",
-                    "isArray": false,
-                    "type": "AWSURL",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "majorAndMinor": {
                     "name": "majorAndMinor",
                     "isArray": false,
@@ -160,10 +153,17 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "yearJoined": {
-                    "name": "yearJoined",
+                "facebook": {
+                    "name": "facebook",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "AWSURL",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "instagram": {
+                    "name": "instagram",
+                    "isArray": false,
+                    "type": "AWSURL",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -174,10 +174,10 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "instagram": {
-                    "name": "instagram",
+                "yearJoined": {
+                    "name": "yearJoined",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },

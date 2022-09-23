@@ -13,12 +13,12 @@ type Members @model @auth(rules: [{allow: public}]) {
   fullName: String
   graduationYear: String
   description: String
-  facebook: AWSURL
   majorAndMinor: String
   funFact: String
   eboardPosition: String
-  yearJoined: Int
-  yearLeft: Int
+  facebook: AWSURL
   instagram: AWSURL
+  yearLeft: Int
+  yearJoined: Int
   performancess: [Performances] @manyToMany(relationName: "PerformancesMembers")
-}
+} 

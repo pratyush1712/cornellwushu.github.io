@@ -1,8 +1,4 @@
-import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
-
-
-
-
+import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 
 type PerformancesMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
@@ -35,13 +31,13 @@ export declare class Members {
   readonly fullName?: string | null;
   readonly graduationYear?: string | null;
   readonly description?: string | null;
-  readonly facebook?: string | null;
   readonly majorAndMinor?: string | null;
   readonly funFact?: string | null;
   readonly eboardPosition?: string | null;
-  readonly yearJoined?: number | null;
-  readonly yearLeft?: number | null;
+  readonly facebook?: string | null;
   readonly instagram?: string | null;
+  readonly yearLeft?: number | null;
+  readonly yearJoined?: number | null;
   readonly performancess?: (PerformancesMembers | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
