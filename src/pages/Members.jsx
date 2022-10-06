@@ -168,7 +168,6 @@ function Member(props) {
             sx={{
               borderColor: fontColorPrimary,
               color: fontColorPrimary,
-              border: 3,
             }}
             onChange={handleMobileYearChange}
           >
