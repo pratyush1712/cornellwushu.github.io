@@ -133,7 +133,7 @@ function Home(props) {
                 direction={{ md: "row" }}
                 sx={{
                   maxHeight: { md: 300 },
-                  maxWidth: { xs: "100%" },
+                  maxWidth: { xs: "80vw" },
                   mb: 3,
                   overflowX: { md: "scroll" },
                   overflowY: { xs: "scroll", md: "auto" },
