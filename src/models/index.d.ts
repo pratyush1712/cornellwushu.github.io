@@ -39,6 +39,7 @@ export declare class Members {
   readonly yearLeft?: number | null;
   readonly yearJoined?: number | null;
   readonly performancess?: (PerformancesMembers | null)[] | null;
+  readonly locationOnWebPage?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Members, MembersMetaData>);

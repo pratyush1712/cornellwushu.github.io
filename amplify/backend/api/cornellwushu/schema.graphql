@@ -21,4 +21,6 @@ type Members @model @auth(rules: [{allow: public}]) {
   yearLeft: Int
   yearJoined: Int
   performancess: [Performances] @manyToMany(relationName: "PerformancesMembers")
-} 
+  locationOnWebPage: Int
+}
+ 

@@ -1,9 +1,9 @@
 import './App.css';
-import { HashRouter as Router } from 'react-router-dom'
-import { Route, Routes } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import { DataStore } from '@aws-amplify/datastore';
-import { Members, PerformancesMembers, Performances } from './models';
+import {HashRouter as Router} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {DataStore} from '@aws-amplify/datastore';
+import {Members, PerformancesMembers, Performances} from './models';
 
 import Header from './pages/Header';
 import Footer from './pages/Footer';
@@ -13,18 +13,24 @@ import Member from './pages/Members';
 import Home from './pages/Home';
 import FAQ from './pages/FAQ';
 import LivePerformance from './pages/LivePerformance';
-import Amplify from 'aws-amplify'
-import awsconfig from './aws-exports'
-Amplify.configure(awsconfig)
+import Amplify from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 function App() {
   const [performances, setPerformances] = useState([]);
   const [members, setMembers] = useState([]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
   useEffect(() => {
     const fetchMembers = async () => {
-      const membersPerformances = JSON.parse(JSON.stringify(await DataStore.query(PerformancesMembers)))
+      const membersPerformances = JSON.parse(JSON.stringify(await DataStore.query(PerformancesMembers)));
       let performances = JSON.parse(JSON.stringify(await DataStore.query(Performances)));
       let members = JSON.parse(JSON.stringify(await DataStore.query(Members)));
-      let sortedMembers = { alumni: {}, currentMember: [], currentEboard: [] }
+      let sortedMembers = {alumni: {}, currentMember: [], currentEboard: []};
+      let events = performances.filter(perf => new Date(perf.date.replace("-", "/")) > new Date()).sort((a, b) => new Date(b.date) - new Date(a.date));
+      if (members.length === 0) {
+        fetchMembers();
+        return;
+      };
       for (const relationship of membersPerformances) {
         const memberIndex = members.findIndex(req => req.id === relationship.members.id);
         const performanceIndex = performances.findIndex(req => req.id === relationship.performances.id);
@@ -43,21 +49,22 @@ function App() {
           sortedMembers.currentEboard.push(member);
         }
         else {
-          sortedMembers.currentMember.push(member)
+          sortedMembers.currentMember.push(member);
         }
       }
       setMembers(sortedMembers);
-      setPerformances(performances);
-    }
-    fetchMembers()
-  }, [])
+      setPerformances(performances.filter(perf => new Date(perf.date.replace("-", "/")) <= new Date()).sort((a, b) => new Date(b.date) - new Date(a.date)));
+      setUpcomingEvents(events);
+    };
+    fetchMembers();
+  }, []);
 
   return (
     <Router >
       <div data-testid="App">
         <Header />
         <Routes>
-          <Route path="" element={<Home />} />
+          <Route path="" element={<Home events={upcomingEvents} />} />
           <Route path="about" element={<About />} />
           <Route path="members" element={<Member members={members} />} />
           <Route path="faq" element={<FAQ />} />

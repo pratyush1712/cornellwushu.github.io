@@ -195,6 +195,13 @@ export const schema = {
                         "associatedWith": "members"
                     }
                 },
+                "locationOnWebPage": {
+                    "name": "locationOnWebPage",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -320,5 +327,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "59cb03c4f5760ea62a3af96dc54c7f19"
+    "version": "22b1381a43c9fad6c9b19f52a80ff196"
 };
