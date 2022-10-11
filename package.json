@@ -11,10 +11,19 @@
     "@mui/icons-material": "^5.8.2",
     "@mui/lab": "^5.0.0-alpha.90",
     "@mui/material": "^5.8.2",
+    "@sendgrid/mail": "^7.7.0",
+    "@tinymce/tinymce-react": "^4.2.0",
     "aws-amplify": "^4.3.27",
+    "draft-js": "^0.11.7",
+    "fs": "^0.0.1-security",
+    "nodemailer": "^6.8.0",
+    "path-browserify": "^1.0.1",
     "polished": "^4.2.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "ra-core": "^4.4.0",
+    "ra-input-rich-text": "^4.4.0",
+    "react": "^18.2.0",
+    "react-admin": "^4.4.0",
+    "react-dom": "^18.2.0",
     "react-player": "^2.10.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
@@ -51,6 +60,19 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "browser": {
+    "crypto": false,
+    "fs": false,
+    "path": false,
+    "os": false,
+    "net": false,
+    "stream": false,
+    "tls": false
   }
 }

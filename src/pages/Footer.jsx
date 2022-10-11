@@ -5,8 +5,16 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Logo } from "../styles/FooterStyles";
 import { fontColorPrimary } from "../styles/ColorsFonts";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const navigateToAdmin = (e) => {
+    if (e.detail === 4) {
+      navigate("admin");
+    }
+  };
   return (
     <>
       <Grid
@@ -25,6 +33,7 @@ const Footer = () => {
                 backgroundRepeat: "no-repeat",
                 marginLeft: 35,
               }}
+              onClick={navigateToAdmin}
             />
             <Typography
               variant={"h4"}

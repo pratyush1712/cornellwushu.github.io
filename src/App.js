@@ -12,6 +12,7 @@ import PastPerf from './pages/PastPerf';
 import Member from './pages/Members';
 import Home from './pages/Home';
 import FAQ from './pages/FAQ';
+import Admin from './pages/Admin';
 import LivePerformance from './pages/LivePerformance';
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
@@ -70,6 +71,7 @@ function App() {
           <Route path="faq" element={<FAQ />} />
           <Route path="performances" element={<PastPerf performances={performances} />} />
           <Route path="wushulive" element={<LivePerformance />} />
+          <Route path="admin" element={<Admin />} />
         </Routes>
         <Footer />
       </div>

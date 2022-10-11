@@ -10,7 +10,7 @@ import {
 import React from "react";
 import about from "../images/about.jpg";
 import wushu from "../images/wushu.jpg";
-import { Container } from "@mui/system";
+import { Container } from "@mui/material";
 import {
   bgColorPrimary,
   bgColorPrimaryNoBlur,
