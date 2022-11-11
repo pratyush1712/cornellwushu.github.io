@@ -3,7 +3,7 @@ import {HashRouter as Router} from 'react-router-dom';
 import {Route, Routes} from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 import {DataStore} from '@aws-amplify/datastore';
-import {Members, PerformancesMembers, Performances} from './models';
+import {Members, PerformancesMembers, Performances} from "./models";
 
 import Header from './pages/Header';
 import Footer from './pages/Footer';
